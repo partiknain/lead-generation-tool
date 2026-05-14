@@ -1,17 +1,16 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
-const leadRoutes = require('./routes/leads');
+require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/leads', leadRoutes);
+app.use("/api/leads", require("./routes/leadRoutes"));
+app.use("/api/search", require("./routes/searchRoutes"));
 
-const PORT = 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });
